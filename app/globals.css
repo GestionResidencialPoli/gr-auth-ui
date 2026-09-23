@@ -1,0 +1,26 @@
+.standalone-state {
+  max-width: 480px;
+  margin: 12vh auto;
+  padding: 24px;
+}
+
+.standalone-state form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.standalone-state .gr-feedback {
+  margin-bottom: 16px;
+}
+
+.link-row {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.link-row a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}

@@ -1,0 +1,7 @@
+import { LoginScreen } from "@/features/auth/login-screen";
+
+export const metadata = { title: "Iniciar sesión" };
+
+export default function LoginPage() {
+  return <LoginScreen />;
+}
