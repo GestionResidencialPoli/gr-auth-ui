@@ -15,9 +15,6 @@ export function LoginScreen() {
   useEffect(() => {
     let active = true;
 
-    // Si ya hay sesion activa (por ejemplo, se volvio a /login con el
-    // formulario en el historial), se salta directo al puente SSO: no tiene
-    // sentido pedir credenciales otra vez.
     authService
       .getSession()
       .then((user) => {

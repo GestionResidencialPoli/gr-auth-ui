@@ -7,11 +7,6 @@ import { content } from "@/config/content";
 
 type Status = "idle" | "pending" | "sent" | "error";
 
-/**
- * El backend responde 202 exista o no el correo (ver ADR-001 en
- * gr-user-microservice): no hay forma de distinguir "correo enviado" de
- * "el correo no existe" desde este formulario, y es intencional.
- */
 export function PasswordResetRequestScreen() {
   const [status, setStatus] = useState<Status>("idle");
 

@@ -13,12 +13,6 @@ import { content } from "@/config/content";
 
 type Status = "idle" | "pending" | "done" | "no-token" | "error";
 
-/**
- * El backend responde 400 tanto para un token invalido/expirado como para una
- * contrasena que no cumple la politica -- no hay forma de distinguirlos por
- * el codigo de estado. Se muestra el mensaje que el backend ya redacta en
- * espanol para el usuario en vez de adivinar cual de los dos ocurrio.
- */
 export function PasswordResetConfirmScreen() {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string>();
