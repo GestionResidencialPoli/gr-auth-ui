@@ -85,6 +85,8 @@ export function PasswordResetConfirmScreen() {
             showLabel={content.confirm.showPassword}
             hideLabel={content.confirm.hidePassword}
             disabled={status === "pending"}
+            policy
+            hint={content.confirm.passwordPolicy}
           />
           {status === "error" && <Feedback error>{error}</Feedback>}
           <Button type="submit" disabled={status === "pending"}>

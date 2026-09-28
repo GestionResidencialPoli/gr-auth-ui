@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { AuthLayout, Button, Feedback, TextField } from "@gestionresidencial/shared-ui";
+import { AuthLayout, Button, EMAIL_PATTERN, Feedback, TextField } from "@gestionresidencial/shared-ui";
 import { apiFetch } from "@gestionresidencial/auth-client";
 import { content } from "@/config/content";
 
@@ -40,6 +40,7 @@ export function PasswordResetRequestScreen() {
             autoComplete="username"
             required
             maxLength={254}
+            pattern={EMAIL_PATTERN}
             disabled={status === "pending"}
           />
           {status === "error" && <Feedback error>{content.auth.failed}</Feedback>}
