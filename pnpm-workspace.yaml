@@ -2,5 +2,4 @@ allowBuilds:
   sharp: false
   unrs-resolver: false
 minimumReleaseAgeExclude:
-  - '@gestionresidencial/auth-client@0.1.1'
-  - '@gestionresidencial/shared-ui@0.1.1'
+  - '@gestionresidencial/*'
