@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
-const backendApiUrl = process.env.BACKEND_API_URL || "http://localhost:8080";
+// El gateway es el único origen de API expuesto al navegador.
+const backendApiUrl = process.env.BACKEND_API_URL || "http://localhost:4000";
 
 const nextConfig: NextConfig = {
   // @gestionresidencial/shared-ui y @gestionresidencial/auth-client se
