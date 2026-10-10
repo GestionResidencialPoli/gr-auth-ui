@@ -4,6 +4,7 @@ import type { NextConfig } from "next";
 const backendApiUrl = process.env.BACKEND_API_URL || "http://localhost:4000";
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   // @gestionresidencial/shared-ui y @gestionresidencial/auth-client se
   // distribuyen construidos (ESM + tipos en dist/), no necesitan transpilarse.
   async rewrites() {
