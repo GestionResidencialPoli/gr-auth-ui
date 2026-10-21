@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { AuthLayout, LoginForm, Skeleton, type LoginValues } from "@gestionresidencial/shared-ui";
 import { AUTH_ERROR, authErrorMessage, authService } from "@gestionresidencial/auth-client";
 import { content } from "@/config/content";
+import { isLogoutRequest } from "./logout-request";
 import { redirectViaSso } from "./sso-redirect";
 
 type Status = "checking-session" | "idle" | "pending" | "redirecting";
@@ -14,6 +15,19 @@ export function LoginScreen() {
 
   useEffect(() => {
     let active = true;
+
+    if (isLogoutRequest(window.location.search)) {
+      authService
+        .logout()
+        .catch(() => undefined)
+        .finally(() => {
+          window.history.replaceState(null, "", window.location.pathname);
+          if (active) setStatus("idle");
+        });
+      return () => {
+        active = false;
+      };
+    }
 
     authService
       .getSession()
