@@ -1,0 +1,28 @@
+name: Publicar imagen
+
+# Construye la imagen de produccion, la publica en GHCR y avisa a Jenkins para
+# desplegarla en k3s. Solo desde main (estado liberado del flujo del equipo).
+# Las URLs publicas se incrustan en el build: Next.js las lee al compilar.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+jobs:
+  release:
+    name: Build y desplegar
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: read
+      packages: write
+    uses: GestionResidencialPoli/gr-infra/.github/workflows/build-push.yml@main
+    with:
+      service-name: gr-auth-ui
+      compose-service: auth-ui
+      build-args: |
+            BACKEND_API_URL=http://gateway:4000
+            NEXT_PUBLIC_ADMIN_UI_URL=https://admin.residencialpoli.online
+            NEXT_PUBLIC_COMMON_UI_URL=https://app.residencialpoli.online
+    secrets:
+      JENKINS_WEBHOOK_URL: ${{ secrets.JENKINS_WEBHOOK_URL }}
+      JENKINS_WEBHOOK_TOKEN: ${{ secrets.JENKINS_WEBHOOK_TOKEN }}
