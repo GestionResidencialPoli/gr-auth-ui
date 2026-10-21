@@ -42,6 +42,7 @@ export const content = {
     subtitle: "Ingresa tu nueva contraseña para continuar.",
     footer: "Espacios compartidos. Una vida más simple.",
     newPassword: "Nueva contraseña",
+    passwordPolicy: "Entre 8 y 72 caracteres, con al menos una minúscula, una mayúscula y un dígito.",
     showPassword: "Mostrar",
     hidePassword: "Ocultar",
     submit: "Restablecer contraseña",

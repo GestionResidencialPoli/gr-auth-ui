@@ -1,17 +1,12 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { AuthLayout, Button, Feedback, TextField } from "@gestionresidencial/shared-ui";
+import { AuthLayout, Button, EMAIL_PATTERN, Feedback, TextField } from "@gestionresidencial/shared-ui";
 import { apiFetch } from "@gestionresidencial/auth-client";
 import { content } from "@/config/content";
 
 type Status = "idle" | "pending" | "sent" | "error";
 
-/**
- * El backend responde 202 exista o no el correo (ver ADR-001 en
- * gr-user-microservice): no hay forma de distinguir "correo enviado" de
- * "el correo no existe" desde este formulario, y es intencional.
- */
 export function PasswordResetRequestScreen() {
   const [status, setStatus] = useState<Status>("idle");
 
@@ -45,6 +40,7 @@ export function PasswordResetRequestScreen() {
             autoComplete="username"
             required
             maxLength={254}
+            pattern={EMAIL_PATTERN}
             disabled={status === "pending"}
           />
           {status === "error" && <Feedback error>{content.auth.failed}</Feedback>}
